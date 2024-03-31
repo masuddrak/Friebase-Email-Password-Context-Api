@@ -9,28 +9,31 @@ import Layout from './Layout/Layout';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import AuthProvider from './AuthProvider/AuthProvider';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
-        path:"/signUp",
-        element:<SignUp></SignUp>
+        path: "/signUp",
+        element: <SignUp></SignUp>
       },
       {
-        path:"/signIn",
-        element:<SignIn></SignIn>
+        path: "/signIn",
+        element: <SignIn></SignIn>
       }
     ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
